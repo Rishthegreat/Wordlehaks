@@ -1,4 +1,7 @@
-import pandas as pd
+with open('words.txt') as f:
+  words = f.readlines()
 
-words = pd.read_table('words.txt', header=None)
-print(words)
+for i in range (0, len(words)):
+  words[i] = words[i][:-1]
+  words[i] = words[i].lower()
+

@@ -21,24 +21,36 @@ def remKeep(letter, index = -1):
   for word in words:
     if (index == -1) & (letter not in word):
       wordstemp.append(word)
-    elif word[index] == letter:
+    elif ((index != -1) & (word[index] == letter)):
+      wordstemp.append(words)
+  words = wordstemp
+
+def keep(letter, index):
+  global words
+  wordstemp = []
+  for word in words:
+    if word[index] == letter:
       wordstemp.append(words)
   words = wordstemp
 
 if __name__ == "__main__":
   args = sys.argv[1:]
+  print(args)
   if len(args) <= 0:
     print(words[0])
     quit()
   if "-w" in args:
     clue = args[args.index("-w")+1]
+    print(clue)
     for x in range(0, len(clue)):
       character = clue[x]
       if character != '_':
         remKeep(character, x)
-  if "-r" in args:
+        print(character + str(x))
+  print(words[0])
+"""  if "-r" in args:
     lettersToRemove = []
-    i = 1
+    i = args.index("-r")+1
     while (i < len(args)):
       if '-' in args[i]:
         break
@@ -47,3 +59,4 @@ if __name__ == "__main__":
     for letter in lettersToRemove:
       remKeep(letter)
   print(words[0])
+"""

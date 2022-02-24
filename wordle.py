@@ -15,7 +15,7 @@ for word in words:
     wordstemp.append(word)
 words = wordstemp
 
-def rem(letter, index = -1):
+def remKeep(letter, index = -1):
   global words
   wordstemp = []
   for word in words:
@@ -31,10 +31,11 @@ if __name__ == "__main__":
     print(words[0])
     quit()
   if "-w" in args:
-    clue = args(args.index("-w")+1)
+    clue = args[args.index("-w")+1]
     for x in range(0, len(clue)):
       character = clue[x]
-      
+      if character != '_':
+        remKeep(character, x)
   if "-r" in args:
     lettersToRemove = []
     i = 1
@@ -44,4 +45,5 @@ if __name__ == "__main__":
       lettersToRemove.append(args[i])
       i+=1
     for letter in lettersToRemove:
-      rem(letter)      
+      remKeep(letter)
+  print(words[0])

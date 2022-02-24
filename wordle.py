@@ -15,24 +15,33 @@ for word in words:
     wordstemp.append(word)
 words = wordstemp
 
-def rem(letter):
+def rem(letter, index = -1):
   global words
   wordstemp = []
   for word in words:
-    if letter not in word:
+    if (index == -1) & (letter not in word):
       wordstemp.append(word)
+    elif word[index] == letter:
+      wordstemp.append(words)
   words = wordstemp
 
 if __name__ == "__main__":
   args = sys.argv[1:]
   if len(args) <= 0:
-    print(words[0].isalpha())
-  elif args[0] == "-w":
-    given = args[1]
-  elif args[0] == "-r":
+    print(words[0])
+    quit()
+  if "-w" in args:
+    clue = args(args.index("-w")+1)
+    for x in range(0, len(clue)):
+      character = clue[x]
+      
+  if "-r" in args:
     lettersToRemove = []
     i = 1
-    print(len(args))
-    while ((i < len(args)) & ('-' not in args[i])):
+    while (i < len(args)):
+      if '-' in args[i]:
+        break
       lettersToRemove.append(args[i])
-      i+=1    
+      i+=1
+    for letter in lettersToRemove:
+      rem(letter)      

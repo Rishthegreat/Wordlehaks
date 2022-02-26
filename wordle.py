@@ -1,5 +1,6 @@
 import sys
 global words
+import random
 
 with open('words.txt') as f:
   global words
@@ -63,4 +64,5 @@ if __name__ == "__main__":
       i+=1
     for letter in lettersToKeep:
       keep(letter)
+  random.shuffle(words)
   print(words[0:20])

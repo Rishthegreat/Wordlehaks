@@ -1,6 +1,9 @@
 import sys
+
+from matplotlib.pyplot import text
 global words
 import random
+import tkinter as tk
 
 with open('words.txt') as f:
   global words
@@ -64,5 +67,11 @@ if __name__ == "__main__":
       i+=1
     for letter in lettersToKeep:
       keep(letter)
-  random.shuffle(words)
-  print(words[0:20])
+  if "-open" in args:
+    root = tk.Tk()
+    greeting = tk.Label(text="Wordle Haks")
+    greeting.pack()
+    root.mainloop()
+  else:
+    random.shuffle(words)
+    print(words[0:20])
